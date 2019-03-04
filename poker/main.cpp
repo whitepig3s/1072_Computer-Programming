@@ -23,15 +23,20 @@ void Shuffle(int card_I [],int *card_f,int n) //¬~µP
     }
 }
 
-/*ShowAll(card,n,k)
+void ShowAll(int *card_ptr,int n,int k)
 {
 
+    for (int i=0;i<k;i++)
+    {
+        for(int j=0;j<(n/k);j++)
+        {
+            cout<<card_ptr[i*4+j]<<' ';
+        }
+        cout<<endl;
+    }
+}
 
-
-}*/
-
-void ShowOne (int n)
-{
+void ShowOne (int n){
     if (n<=0&&n<=12)
     {
         cout<<"¶Â®ç"<<n+1;
