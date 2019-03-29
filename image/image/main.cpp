@@ -56,6 +56,7 @@ public:
 
 int main()
 {
+    Image gcc;
     int input;
     bool bool_value =true;
     while (bool_value)
@@ -81,7 +82,7 @@ int main()
 
             break;
         case 5:
-            picture.Show();
+
             break;
         case 6:
             bool_value=false;
