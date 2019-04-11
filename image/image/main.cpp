@@ -56,7 +56,6 @@ public:
 
 int main()
 {
-    Image gcc;
     int input;
     bool bool_value =true;
     while (bool_value)
