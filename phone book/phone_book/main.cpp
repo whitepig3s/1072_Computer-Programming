@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 #define Maxinum 10
 using namespace std;
 void display_list();
@@ -26,26 +27,46 @@ public:
         count=0;
         cout<<"Success"<<endl;
     }
-    void Insert(void){
-        cout<<"Please enter the name.";
+    void Insert(void)
+    {
+        cout<<"Please enter the name:";
         cin>>Name[count];
-        cout<<endl<<"Please enter the phone number.";
+        cout<<endl<<"Please enter the phone number:";
         cin>>Mobile[count];
         count++;
     }
-    int Delete(int k){
-        if (k>=0&&k<=count){
+    int Delete(int k)
+    {
+        if (k>=0&&k<=count)
+        {
             Name[k]=" ";
             Mobile[k]=" ";
-            for (int i=k;i<count;i++){
+            for (int i=k; i<count; i++)
+            {
                 Name[i]=Name[i+1];
                 Mobile[i]=Mobile[i+1];
             }
-             count--;
+            count--;
             return 0;
         }
         else
             return -1;
+    }
+    void write_file(void)
+    {
+        fstream file("phone_book.txt",ios::out);
+        if (file.is_open())
+        {
+            file<<"Number Name Phone_number"<<endl;
+            for(int i=0; i<count; i++)
+            {
+                file<<i<<" "<<Name[i]<<" "<<Mobile[i]<<endl;
+            }
+            cout<<"Success"<<endl;
+        }
+        else
+            cout<<"fail";
+        file.close();
     }
 };
 int TelBook::count=0;
@@ -83,12 +104,17 @@ int main()
         case 4:
             book.Show();
             break;
-        case 5:
+        case 5:  //read file
+        {
+
 
             break;
-        case 6:
-
+        }
+        case 6:  //write
+        {
+            book.write_file();
             break;
+        }
         case 7:
             bool_value=false;
             break;
