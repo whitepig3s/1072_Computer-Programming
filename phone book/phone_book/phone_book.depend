@@ -1,6 +1,8 @@
 # depslib dependency file v1.0
-1554955510 source:c:\users\hp\desktop\1072_computer-programming\phone book\phone_book\main.cpp
+1555069501 source:c:\users\hp\desktop\1072_computer-programming\phone book\phone_book\main.cpp
 	<iostream>
 	<string>
+	<string.h>
+	<stdlib.h>
 	<fstream>
 

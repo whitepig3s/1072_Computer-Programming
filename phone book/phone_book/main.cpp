@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <string.h>
+#include <stdlib.h>
 #include <fstream>
 #define Maxinum 10
 using namespace std;
@@ -14,12 +16,13 @@ public:
     void Show(void)
     {
         cout<<"Number Name Phone_number"<<endl;
-        for(int i=0; i<count; i++)
+        for(int i=0; i<=count; i++)
             cout<<i<<" "<<Name[i]<<" "<<Mobile[i]<<endl;
+        cout<<endl;
     }
     void Clear(void)
     {
-        for(int i=0; i<count; i++)
+        for(int i=0; i<=count; i++)
         {
             Mobile[i]=" ";
             Name[i]=" ";
@@ -30,10 +33,10 @@ public:
     void Insert(void)
     {
         cout<<"Please enter the name:";
+        count++;
         cin>>Name[count];
         cout<<endl<<"Please enter the phone number:";
         cin>>Mobile[count];
-        count++;
     }
     int Delete(int k)
     {
@@ -41,7 +44,7 @@ public:
         {
             Name[k]=" ";
             Mobile[k]=" ";
-            for (int i=k; i<count; i++)
+            for (int i=k; i<=count; i++)
             {
                 Name[i]=Name[i+1];
                 Mobile[i]=Mobile[i+1];
@@ -57,15 +60,49 @@ public:
         fstream file("phone_book.txt",ios::out);
         if (file.is_open())
         {
-            file<<"Number Name Phone_number"<<endl;
-            for(int i=0; i<count; i++)
+            file<<"Number Name Phone_number";
+            for(int i=0; i<=count; i++)
             {
-                file<<i<<" "<<Name[i]<<" "<<Mobile[i]<<endl;
+                file<<endl<<i<<" "<<Name[i]<<" "<<Mobile[i];
             }
             cout<<"Success"<<endl;
         }
         else
             cout<<"fail";
+        file.close();
+    }
+    void read_file()
+    {
+        fstream file("phone_book.txt",ios::in);
+        if (file.is_open())
+        {
+            cout<<"loading... "<<endl;
+            int index_1 =0;
+            char buff[50];
+            while(!file.eof())
+            {
+                for (int i=0;i<30;i++)
+                    buff[i]=' ';
+                file.getline(buff, 30);
+                if (index_1>0)
+                {
+                    char* p;
+                    p = strtok(buff, " ");
+                    count= atoi(p);
+                    p = strtok(NULL, " ");
+                    Name[count]=p;
+                    p = strtok(NULL," ");
+                    Mobile[count]=p;
+                }
+                else
+                {
+                    index_1++;
+                }
+            }
+            file.close();
+        }
+        else
+            cout<<"Error";
         file.close();
     }
 };
@@ -104,17 +141,12 @@ int main()
         case 4:
             book.Show();
             break;
-        case 5:  //read file
-        {
-
-
+        case 5:
+            book.read_file();
             break;
-        }
-        case 6:  //write
-        {
+        case 6:
             book.write_file();
             break;
-        }
         case 7:
             bool_value=false;
             break;
