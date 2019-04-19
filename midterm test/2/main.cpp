@@ -22,8 +22,8 @@ void fb(char x[N][N],int n,char y,int z)
         int ay=rand()%n;
         while(x[ax][ay]!='_')
         {
-            int ax=rand()%n;
-            int ay=rand()%n;
+            ax=rand()%n;
+            ay=rand()%n;
         }
         x[ax][ay]=y;
     }
