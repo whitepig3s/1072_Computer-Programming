@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1555644824 source:c:\users\white\desktop\1072_computer-programming\midterm test\2\main.cpp
+	<iostream>
+	<stdlib.h>
+	<time.h>
+
