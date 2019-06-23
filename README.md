@@ -14,5 +14,5 @@
 2019/04/26 CH15練習 <br>
 2019/05/02 CH16練習 <br>
 2019/05/09 CH17練習 <br>
-2019/06/09 期末專題 (Network_Tester)<br>
+2019/06/09 期末專題 [(Network_Tester)](https://github.com/whitepig3s/Network_Tester)<br>
 2019/06/23 小考
